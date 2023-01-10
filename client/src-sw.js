@@ -29,7 +29,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 // Asset Caching
 registerRoute(
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
-  new StaleWhileRevalidate({
+  new offlineFallback({
     cacheName: 'asset-cache',
     plugins: [
       new CacheableResponsePlugin({
